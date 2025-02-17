@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="855.0" styleClass="box-scene" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.createProfSceneController">
+   <children>
+      <Label layoutX="31.0" layoutY="28.0" prefHeight="39.0" prefWidth="247.0" text="Ajouter un Professeur" textAlignment="CENTER" textFill="#0d0d0d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="name" layoutX="30.0" layoutY="98.0" prefHeight="25.0" prefWidth="229.0" promptText="nom de l'enseignant" styleClass="field" stylesheets="@../application.css" />
+      <TextField fx:id="surname" layoutX="30.0" layoutY="135.0" prefHeight="25.0" prefWidth="229.0" promptText="prenom de l'enseignant" styleClass="field" stylesheets="@../application.css" />
+      <TextField fx:id="grade" layoutX="349.0" layoutY="169.0" prefHeight="25.0" prefWidth="113.0" promptText="grade" styleClass="field" stylesheets="@../application.css" />
+      <ComboBox fx:id="sexeBox" layoutX="479.0" layoutY="169.0" prefHeight="25.0" prefWidth="99.0" promptText="sexe" styleClass="field" stylesheets="@../application.css" />
+      <Button fx:id="saveProf" layoutX="627.0" layoutY="100.0" mnemonicParsing="false" onAction="#AddProfessor" prefHeight="25.0" prefWidth="113.0" text="Enregistrer">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Button>
+      <ComboBox fx:id="discipline" layoutX="349.0" layoutY="134.0" prefHeight="27.0" prefWidth="229.0" promptText="discipline" styleClass="field" />
+      <TableView fx:id="tableProfessor" layoutX="32.0" layoutY="297.0" onMouseClicked="#mouseClicked" prefHeight="218.0" prefWidth="792.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="47.0" text="ID" />
+          <TableColumn fx:id="nameColumn" prefWidth="135.0" text="NOM" />
+            <TableColumn fx:id="surnameColumn" prefWidth="135.0" text="PRENOM" />
+            <TableColumn fx:id="disciplineColumn" prefWidth="79.0" text="DISCIPLINE" />
+            <TableColumn fx:id="telColumn" prefWidth="123.0" text="TEL" />
+            <TableColumn fx:id="addressColumn" prefWidth="143.0" text="ADRESSE" />
+            <TableColumn fx:id="gradeColumn" minWidth="0.0" prefWidth="62.0" text="GRADE" />
+            <TableColumn fx:id="sexeColumn" prefWidth="67.0" text="SEXE" />
+        </columns>
+      </TableView>
+      <Button fx:id="updateProf" layoutX="627.0" layoutY="136.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Modifier">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteProf" layoutX="627.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" text="Supprimer">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="telProfesseur" layoutX="30.0" layoutY="169.0" prefHeight="27.0" prefWidth="229.0" promptText="telephone: +237 " styleClass="field" />
+      <TextField fx:id="mailProfesseur" layoutX="349.0" layoutY="98.0" prefHeight="27.0" prefWidth="229.0" promptText="mail: example@gmail.com" styleClass="field" />
+      <TextField fx:id="searchBar" layoutX="138.0" layoutY="253.0" prefHeight="27.0" prefWidth="324.0" promptText="rechercher..." styleClass="field" />
+      <Label layoutX="56.0" layoutY="257.0" text="Rechercher :">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Button fx:id="printExcelFilesButton" layoutX="722.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" />
+      <Button fx:id="printPdfFileButton" layoutX="780.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" style="-fx-background-color: red;" textFill="#171616" />
+      	
+   </children>
+</AnchorPane>

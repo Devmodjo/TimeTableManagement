@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1080.0" styleClass="mainB" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.MainAppController">
+   <children>
+      <AnchorPane layoutY="-2.0" prefHeight="647.0" prefWidth="182.0">
+         <children>
+            <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="137.0" prefHeight="38.0" prefWidth="224.0" text="Label" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <Button fx:id="logoutButton" layoutX="47.0" layoutY="601.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="129.0" style="-fx-background-color: transparent; -fx-text-fill: green;" text="se deconnecter">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Button fx:id="createClassButton" layoutX="13.0" layoutY="283.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Gestion des classes">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="createProfesseurButton" layoutX="13.0" layoutY="324.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Gestion des Professeurs">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Button>
+            <Button fx:id="AcceuilButton" layoutX="14.0" layoutY="203.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="utilisateurs">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="129.0" fitWidth="172.0" layoutX="47.0" layoutY="14.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@../img/user-avatar.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="13.0" layoutY="369.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Tableau de bord">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="createMatiere" layoutX="13.0" layoutY="244.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Ajout de matiere">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainBox" layoutX="223.0" prefHeight="640.0" prefWidth="856.0" style="-fx-background-color: white;" />
+   </children>
+
+</AnchorPane>

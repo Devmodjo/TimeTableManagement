@@ -1,0 +1,62 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+/*
+ * #21c063
+ * #0b141a
+ */
+ 
+ /**
+  * width: 855
+  * height: 637
+  */
+AnchorPane{
+	-fx-background-color:#0b141a;
+}
+
+Button{
+	-fx-background-color:#21c063;
+	/*-fx-border-radius:50%;*/
+	-fx-cursor: pointer;
+}
+
+TextField{
+	-fx-background-color:#242c31;
+	-fx-text-fill:#FFFFFF;
+}
+PasswordField{
+	-fx-background-color:#242c31;
+	-fx-text-fill:#FFFFFF;
+}
+ComboBox{
+	-fx-background-color:#242c31;
+}
+.navButton{
+	-fx-background-color:transparent;
+	-fx-text-fill:#21c063;
+	-fx-border-color:#21c063;
+	-fx-border-radius:20px;
+}
+.verticalB{
+	-fx-background-color:whitesmoke;
+}
+.mainB{
+	-fx-background-color:white;
+}
+.comboBox{
+	-fx-fill:#FFFFFF;
+	-fx-text-fill: #FF0000;
+}
+.box-scene{
+	-fx-background-color:white;
+}
+.layoutMatiere{
+	-fx-border-radius:15px;
+	-fx-background-color:white;
+	-fx-border-color:#0b141a;
+}
+.field{
+	-fx-background-color:white;
+	-fx-border-color: grey;
+	-fx-border-radius:10px;
+	-fx-text-fill:black;
+}
