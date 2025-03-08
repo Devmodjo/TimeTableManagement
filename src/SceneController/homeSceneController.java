@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import DBManager.DBManager;
 import ObjectModel.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -19,6 +22,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import util.DialogBox;
 
 public class homeSceneController{
@@ -56,6 +60,8 @@ public class homeSceneController{
     
     private List<String> listProf = new ArrayList<>();
     
+    private User user;
+    
     @FXML
     private void initialize() {
     	
@@ -77,6 +83,14 @@ public class homeSceneController{
     			addUser();
     		}catch(SQLException e){e.printStackTrace();}
     	});
+    	removeButton.setOnAction(event ->{
+    		try {
+    			removeUser();
+    		} catch(SQLException e) {e.printStackTrace();}
+    	});
+    	// mise a jour automatique du tablau
+    	mouseClicked();
+    	updateTableview();
     }
     
     
@@ -98,13 +112,15 @@ public class homeSceneController{
     		} else {
     			user = usernameField.getText();
     		}
-    		
+    		User us = new User(null, user, userStatus, pass);
     		if(user != null && pass != "") {
     			ps = con.prepareStatement(sql);
-            	ps.setString(1, user);
-            	ps.setString(2, pass);
-            	ps.setString(3, userStatus);
+            	ps.setString(1, us.getUsername());
+            	ps.setString(2, us.getPassword());
+            	ps.setString(3, us.getUserStatus());
             	ps.execute();
+            	updateTableview();
+            	clearField();
             	boxDialog.infoAlertBox("Save[OK]", "nouvel utilisateur enregistrer aec succes,");
     		} else {
     			boxDialog.errorAlertBox("ERROR", "verifiez vos champs");
@@ -117,38 +133,79 @@ public class homeSceneController{
     	
     }
     
-    public void setUserInfo(String nomProf) throws SQLException{
-    	/* affecter les info utilisateur(professeur)
-    	 * dans les champs si son nom est selectionner   */
-    	
-    	if(verifyChecked() == true) {
-    		Connection con = null;
-        	Statement stmt = null;
-        	ResultSet rs = null;
-        	
-        	comboStatus.setValue("Professeur");
-        	String sql = "SELECT idProfesseur FROM professeur WHERE nom='" + nomProf+ "'";
-        	if(!nomProf.isEmpty()) {
-        		try {
-            		con = DBManager.connect();
-            		stmt = con.createStatement();
-            		rs = stmt.executeQuery(sql);
-            		
-            		while(rs.next()) {
-            			passwordField.setText(rs.getString("idProfesseur"));
-            		}
-        	    	
-            	} finally {
-            		if (stmt != null) stmt.close();
-            		if (rs != null) rs.close();
-            		if (con != null) con.close();
-            		
-            	}
-        	}
-    	}else {
-    		System.out.println("cheat");
+    public void updateTableview() {
+    	/*mise a jour du tableau*/
+    	try {
+    		ObservableList<User> list = getListUser();
+    		// affecetetr les valeur aux champs
+    		columnID.setCellValueFactory(new PropertyValueFactory<User, Integer>("idUser"));
+    		columnUser.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+    		columnStatus.setCellValueFactory(new PropertyValueFactory<User, String>("password"));
+    		columnPassword.setCellValueFactory(new PropertyValueFactory<User,String>("userStatus"));
+    		tableViewUser.setItems(list);
+    	} catch(Exception e ) {
+    		boxDialog.errorAlertBox("ERROR", "une erreur est survenue");
+    		e.printStackTrace();
     	}
-    	
+    }
+    
+    @FXML
+    public void mouseClicked() {
+    	try {
+    		User us = tableViewUser.getSelectionModel().getSelectedItem();
+    		us = new User(us.getIdUser(), us.getUsername(), us.getUserStatus(), us.getPassword());
+    		this.user = us;
+    		removeButton.setDisable(false);
+    	} catch(Exception e ) {
+    		// lol
+    	}
+    }
+    
+    public void removeUser() throws SQLException{
+    	Connection con = null;
+    	PreparedStatement ps = null;
+    	try {
+    		String sql = "DELETE FROM user WHERE id_user=?";
+    		con = DBManager.connect();
+    		ps = con.prepareStatement(sql);
+    		ps.setInt(1, this.user.getIdUser());
+    		ps.execute();
+    		updateTableview();
+    		clearField();
+    		boxDialog.infoAlertBox("REMOVE OK", "l'element a bien ete supprimer");
+    		
+    	} finally {
+    		if(ps != null) ps.close();
+    		if(con != null) con.close();
+    	}
+    }
+    
+    public ObservableList<User> getListUser() throws SQLException{
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ObservableList<User> listUser = FXCollections.observableArrayList();
+		try {
+			con = DBManager.connect();
+			String sql = "SELECT * FROM user";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				User us = new User(
+						rs.getInt("id_user"),
+						rs.getString("name_user"),
+						rs.getString("password_user"),
+						rs.getString("userStatus"));
+				listUser.add(us);
+			}
+			
+		} finally {
+			if (rs != null ) rs.close();
+    		if (stmt != null) stmt.close();
+    		if (con != null) con.close();
+		}
+    	return listUser;
     }
     
     public List<String> someProfesseur() throws SQLException{
@@ -195,5 +252,10 @@ public class homeSceneController{
     		return false;
     	}
     }
-    // public void
+    public void clearField() {
+    	usernameField.setText("");
+    	passwordField.setText("");
+    	comboNomProfesseur.setValue("");
+    	comboStatus.setValue("Admin");
+    }
 }

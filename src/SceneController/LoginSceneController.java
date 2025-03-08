@@ -61,10 +61,14 @@ public class LoginSceneController {
             System.out.println("Login successful! User ID: " + user.getId() + ", Username: " + user.getUsername() +", userStatus : " + user.getUserStatus());
             // Load main application
             try {
+            	// afficher differente interface en fonction des identifiant de connection
+              // if(user.getUserStatus() == "Admin")
+            	   new UserView().AdminView(user, usernameInput);
+               /*if(user.getUserStatus() == "Responsable du temps")
+            	   new UserView().TimesManagerView(user, usernameInput);
+               if(user.getUserStatus() == "Professeur")
+            	   new DialogBox().infoAlertBox("info", "interface indisponible");*/
                
-            	new UserView().AdminView(user, usernameInput);
-               
-                
             } catch (Exception e) {
                 e.printStackTrace();
             }

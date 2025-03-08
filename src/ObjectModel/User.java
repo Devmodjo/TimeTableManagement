@@ -10,7 +10,7 @@ public class User {
 	public User(Integer idUser, String username,String userStatus, String password) {
 		this.idUser = idUser;
 		this.username = username;
-		this.setUserStatus(userStatus);
+		this.userStatus = userStatus;
 		this.password = password;
 		
 	}
