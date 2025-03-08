@@ -41,6 +41,9 @@ public class ajoutClasseController {
     private Button addClass;
     
     @FXML
+    private Button viewTimeTable;
+    
+    @FXML
     private TableView<Classe> tableViewClasse;
     @FXML
     private TableColumn<Classe, String> columnClass;
