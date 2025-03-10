@@ -62,11 +62,11 @@ public class LoginSceneController {
             // Load main application
             try {
             	// afficher differente interface en fonction des identifiant de connection
-              if(user.getUserStatus() == "Admin")
+              if(user.getUserStatus().equals("Admin"))
             	   new UserView().AdminView(user, usernameInput);
-               if(user.getUserStatus() == "Responsable du temps")
+               if(user.getUserStatus().equals("Responsable du temps"))
             	   new UserView().TimesManagerView(user, usernameInput);
-               if(user.getUserStatus() == "Professeur")
+               if(user.getUserStatus().equals("Professeur"))
             	   new DialogBox().infoAlertBox("info", "interface indisponible");
                
             } catch (Exception e) {
