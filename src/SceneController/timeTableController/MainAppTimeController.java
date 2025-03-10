@@ -12,7 +12,7 @@ public class MainAppTimeController {
 	
 	public void setUser(LoginSceneController.User user) {
         this.user = user;
-        welcomeLabel.setText(" Bienvenue " + user.getUsername());
+        welcomeLabel.setText(" Bienvenue " + user.getUsername().toLowerCase());
     }
 
 }
