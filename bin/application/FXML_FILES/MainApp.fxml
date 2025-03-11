@@ -38,7 +38,7 @@
                   <Image url="@../img/user-avatar.png" />
                </image>
             </ImageView>
-            <Button layoutX="13.0" layoutY="369.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Tableau de bord">
+            <Button disable="true" layoutX="13.0" layoutY="369.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="196.0" styleClass="navButton" text="Tableau de bord">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
