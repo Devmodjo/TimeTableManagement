@@ -30,6 +30,8 @@ public class MainAppTimeController {
 	private Button emploieTempsProfessorButton;
 	@FXML
 	private Button logoutLabel;
+	@FXML 
+	private AnchorPane mainBox;
 	
 	private Stage stage;
 	//private Scene scene;

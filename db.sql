@@ -38,6 +38,9 @@ CREATE TABLE IF NOT EXISTS Classe (
 CREATE TABLE IF NOT EXISTS Matiere(
 	idMatiere INTEGER NOT NULL,
 	nomMatiere VARCHAR(20) NOT NULL,
+    idclasse INTEGER NOT NULL,
+    nbrHeures INTEGER NOT NULL CHECK (nbrHeures > 0),
+    FOREIGN KEY (idClasse) REFERENCES Classe(idClasse),
 	PRIMARY KEY(idMatiere AUTOINCREMENT)
 );
 

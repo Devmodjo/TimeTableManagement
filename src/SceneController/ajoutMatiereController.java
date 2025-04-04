@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 
@@ -34,7 +36,8 @@ public class ajoutMatiereController implements Initializable{
 	private ScrollPane scrollpane;
 	@FXML
 	private Button remove;
-	
+	@FXML
+	private ComboBox<String> classlist;
 	@FXML
 	private ListView<String> ListMatiere;
 	
@@ -43,10 +46,8 @@ public class ajoutMatiereController implements Initializable{
 	
 	@FXML
 	private void initialize() {
-		//btnAddMat.setOnAction(event -> ajouterMatiere());
-		//getMatiere();
-		ListMatiere.getItems().addAll(getMatiere());
-		//updateTableMatiere();
+		
+		
 	}
 	
 	
@@ -80,8 +81,38 @@ public class ajoutMatiereController implements Initializable{
 		}
 	}
 	
-	// recuperer les matiere en base de donnée
+	// recupere toute les classe
+	public List<String> someClasse() {
+	    List<String> someclasse = new ArrayList<>(); // Nouvelle liste à chaque appel
+	    Connection con = null;
+	    Statement stmt = null;
+	    ResultSet rs = null;
+	    try {
+	        String sql = "SELECT DISTINCT nom FROM Classe";
+	        con = DBManager.connect();
+	        stmt = con.createStatement();
+	        rs = stmt.executeQuery(sql);
+
+	        while (rs.next()) {
+	            someclasse.add(rs.getString("nom"));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        // Fermeture des ressources dans le bon ordre
+	        try {
+	            if (rs != null) rs.close();
+	            if (stmt != null) stmt.close();
+	            if (con != null) con.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return someclasse;
+	}
+
 	
+	// recuperer les matiere en base de donnée
 	public List<String> getMatiere(){
 		Matiere m;
 		try {
@@ -138,6 +169,8 @@ public class ajoutMatiereController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		/* charger le layout des differents matieres */
 		ListMatiere.getItems().addAll(getMatiere());
+		ListMatiere.getItems().addAll(getMatiere());
+		classlist.getItems().addAll(someClasse());
 		ListMatiere.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 			
 			@Override

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
@@ -8,17 +9,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="#box-scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="855.0" style="-fx-background-color: white;" styleClass="box-scene" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.ajoutMatiereController">
+<AnchorPane id="#box-scene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="855.0" style="-fx-background-color: white;" styleClass="box-scene" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.ajoutMatiereController">
    <children>
       <Label layoutX="31.0" layoutY="28.0" text="Nouvelle Matiere">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <TextField fx:id="fieldAddMat" layoutX="85.0" layoutY="97.0" prefHeight="35.0" prefWidth="340.0" promptText="Entrez une nouvelle matiere" styleClass="field" />
-      <Button fx:id="btnAddMat" layoutX="432.0" layoutY="97.0" mnemonicParsing="false" onAction="#ajouterMatiere" prefHeight="35.0" prefWidth="89.0" style="-fx-border-radius: 10px;" text="Enregistrer">
+      <TextField fx:id="fieldAddMat" layoutX="61.0" layoutY="113.0" prefHeight="35.0" prefWidth="199.0" promptText="Entrez une nouvelle matiere" styleClass="field" />
+      <Button fx:id="btnAddMat" layoutX="466.0" layoutY="110.0" mnemonicParsing="false" onAction="#ajouterMatiere" prefHeight="35.0" prefWidth="89.0" style="-fx-border-radius: 10px;" text="Enregistrer">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Button>
       <Label layoutX="61.0" layoutY="209.0" prefHeight="27.0" prefWidth="159.0" text="Matiere Disponible">
@@ -36,5 +37,16 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <ComboBox fx:id="classlist" layoutX="277.0" layoutY="113.0" prefHeight="35.0" prefWidth="168.0" styleClass="field" />
+      <Label layoutX="61.0" layoutY="89.0" text="nom de la matiere">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="286.0" layoutY="89.0" text="classe concerné">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
