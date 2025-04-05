@@ -124,18 +124,30 @@ public class ajoutMatiereController{
     }
 
     public void removeMatiere() throws SQLException {
-        if(matiere == null) return;
+        Matiere selected = tableMatiere.getSelectionModel().getSelectedItem();
         
-        String sql = "DELETE FROM matiere WHERE idMatiere=?";
+        if(selected == null) {
+            boxDialog.errorAlertBox("Sélection requise", "Veuillez sélectionner une matière à supprimer");
+            return;
+        }
+        
+        String sql = "DELETE FROM matiere WHERE idMatiere = ?";
         try (Connection con = DBManager.connect();
              PreparedStatement ps = con.prepareStatement(sql)) {
             
-            ps.setInt(1, matiere.getIdMatiere());
-            ps.executeUpdate();
-            updateTableView();
-            boxDialog.infoAlertBox(DELETE_SUCCESS, "Élément supprimé avec succès");
+            ps.setInt(1, selected.getIdMatiere());
+            int affectedRows = ps.executeUpdate();
+            
+            if(affectedRows > 0) {
+                updateTableView();
+                boxDialog.infoAlertBox("Succès", "Matière supprimée avec succès");
+            }
+        } catch (SQLException e) {
+            boxDialog.errorAlertBox("Erreur SQL", "Erreur lors de la suppression : " + e.getMessage());
+            throw e;
         }
     }
+
 
     public ObservableList<Matiere> getListMatiere() throws SQLException {
         ObservableList<Matiere> listMatiere = FXCollections.observableArrayList();
