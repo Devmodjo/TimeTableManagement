@@ -4,10 +4,12 @@ public class Matiere {
 	
 	private Integer idMatiere;
 	private String nomMatiere;
+	private String nomClasse;
 	
 	public static class MatiereBuilder{
 		private Integer idMatiere;
 		private String nomMatiere = "non definie";
+		private String nomClasse = "non definie";
 		
 		public MatiereBuilder withIdMatiere(int idMatiere) {
 			this.idMatiere = idMatiere;
@@ -19,11 +21,17 @@ public class Matiere {
 			return this;
 		}
 		
+		public MatiereBuilder withNomClasse(String nomClasse) {
+			this.nomClasse = nomClasse;
+			return this;
+		}
+		
 		// construction de l'objet finale
 		public Matiere build() {
 			Matiere mat = new Matiere();
 			mat.idMatiere = idMatiere;
 			mat.nomMatiere = nomMatiere;
+			mat.setNomClasse(nomClasse);
 			return mat;
 		}
 	}
@@ -44,6 +52,14 @@ public class Matiere {
 
 	public void setNomMatiere(String nomMatiere) {
 		this.nomMatiere = nomMatiere;
+	}
+
+	public String getNomClasse() {
+		return nomClasse;
+	}
+
+	public void setNomClasse(String nomClasse) {
+		this.nomClasse = nomClasse;
 	}
 
 }

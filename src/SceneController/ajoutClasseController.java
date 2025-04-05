@@ -182,7 +182,7 @@ public class ajoutClasseController {
     		
     		con = DBManager.connect();
   
-    		String sql = "SELECT * FROM Classe";
+    		String sql = "SELECT DISTINCT * FROM Classe";
     		stmt = con.createStatement();
     		res = stmt.executeQuery(sql);
     		

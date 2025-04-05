@@ -34,7 +34,9 @@ public class DBManager {
 			String matiere = "CREATE TABLE IF NOT EXISTS matiere("
 					+ "idMatiere INTEGER NOT NULL,"
 					+ "nom_matiere VARCHAR(20) NOT NULL,"
-					+ "PRIMARY KEY(idMatiere AUTOINCREMENT)"
+					+ "nom_classe INTEGER NOT NULL,"
+					+ "PRIMARY KEY(idMatiere AUTOINCREMENT),"
+					+ "FOREIGN KEY (nom_classe) REFERENCES Classe(nom)"
 					+ ");";
 			stmt.execute(matiere);
 			
