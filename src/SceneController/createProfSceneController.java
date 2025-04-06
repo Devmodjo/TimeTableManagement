@@ -88,9 +88,15 @@ public class createProfSceneController {
     	{
     
     		sexeBox.getItems().addAll("neutre", "M", "F");
-    		discipline.getItems().addAll(someDiscipline());
+    		discipline.getItems().addAll(
+    				"Français", "Anglais", "Allemand", "Espagnol", 
+    				"Chinois", "Italien", "Arabe", "Mathématiques", 
+    				"Physique", "Chimie", "Biologie", "SVTEEHB", 
+    				"Informatique", "Programmation", "SI", "Reseaux/maintenance", 
+    				"Histoire", "Geographie", "ECM", "ALCN", "Dessin", "Eps", "TM");
+    		
     		sexeBox.setValue("neutre");
-        	discipline.setValue("empty");
+        	discipline.setValue("discipline");
         	updateProf.setDisable(true);
         	deleteProf.setDisable(true);
         	
