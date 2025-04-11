@@ -1,16 +1,161 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.timeTableController.TimeTableClasseController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="864.0" styleClass="mainB" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.timeTableController.TimeTableClasseController">
    <children>
-      <Label layoutX="39.0" layoutY="32.0" text="Generer un emploie de temps">
+      <Label layoutX="39.0" layoutY="32.0" text="Emploie de temps">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
+      <Label layoutX="44.0" layoutY="85.0" text="NOUVEAU EMPLOIE DE TEMPS" textFill="#7c7b7b" />
+      <ComboBox fx:id="classname" layoutX="52.0" layoutY="143.0" prefWidth="150.0" styleClass="field" />
+      <Label layoutX="57.0" layoutY="122.0" text="nom de la classe">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="245.0" layoutY="122.0" text="année scolaire">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="schoolYear" layoutX="240.0" layoutY="144.0" styleClass="field" />
+      <GridPane layoutX="16.0" layoutY="206.0" prefHeight="425.0" prefWidth="820.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" prefWidth="430.3333435058594" />
+          <ColumnConstraints fx:id="lundiCoursColumn" hgrow="SOMETIMES" maxWidth="488.3333435058594" minWidth="10.0" prefWidth="423.6666564941406" />
+            <ColumnConstraints fx:id="mardiCoursColumn" hgrow="SOMETIMES" maxWidth="488.3333435058594" minWidth="10.0" prefWidth="423.6666564941406" />
+            <ColumnConstraints fx:id="mercrediCoursColumn" hgrow="SOMETIMES" maxWidth="488.3333435058594" minWidth="10.0" prefWidth="423.6666564941406" />
+            <ColumnConstraints fx:id="jeudiCoursColumn" hgrow="SOMETIMES" maxWidth="488.3333435058594" minWidth="10.0" prefWidth="423.6666564941406" />
+            <ColumnConstraints fx:id="vendrediCoursColumn" hgrow="SOMETIMES" maxWidth="488.3333435058594" minWidth="10.0" prefWidth="423.6666564941406" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="53.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+          <RowConstraints fx:id="periode_1" maxHeight="67.66665649414062" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+          <RowConstraints fx:id="periode_2" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="periode_3" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="periode_4" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="periode_5" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="periode_6" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints fx:id="periode_7" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" prefHeight="47.0" prefWidth="135.0" style="-fx-background-color: whitesmoke;" text="Lundi" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="49.0" prefWidth="135.0" style="-fx-background-color: whitesmoke;" text="Mardi" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="49.0" prefWidth="136.0" style="-fx-background-color: whitesmoke;" text="Mercredi" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" prefHeight="49.0" prefWidth="136.0" style="-fx-background-color: whitesmoke;" text="jeudi" GridPane.columnIndex="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: whitesmoke;" text="vendredi" textAlignment="CENTER" GridPane.columnIndex="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="lundiCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="lundiCoursPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="lundiCourPeriode3" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="lundiCourPeriode4" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="lundiCourPeriode5" prefHeight="33.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="lundiCourPeriode6" prefHeight="33.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id="lundiCourPeriode7" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="mardiCourPeriode1" prefHeight="31.0" prefWidth="142.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="mardiCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="mardiCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="mardiCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="mardiCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="mardiCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="mardiCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <ComboBox fx:id="mercrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="mercrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ComboBox fx:id="mercrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <ComboBox fx:id="mercrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="mercrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <ComboBox fx:id="mercrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <ComboBox fx:id="mercrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <ComboBox fx:id="jeudiCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <ComboBox fx:id="jeudiCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <ComboBox fx:id="jeudiCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <ComboBox fx:id="jeudiCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <ComboBox fx:id="jeudiCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <ComboBox fx:id="jeudiCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <ComboBox fx:id="jeudiCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <ComboBox fx:id="vendrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <ComboBox fx:id="vendrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <ComboBox fx:id="vendrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <ComboBox fx:id="vendrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <ComboBox fx:id="vendrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <ComboBox fx:id="vendrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <ComboBox fx:id="vendrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label fx:id="hours_period_1" alignment="CENTER" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: grey;" text="7h30 - 8h30" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_period_2" alignment="CENTER" prefHeight="40.0" prefWidth="132.0" style="-fx-background-color: grey;" text="8h30 - 9h30" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_periode_3" alignment="CENTER" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: grey;" text="9h30 - 10h30" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_period_4" alignment="CENTER" prefHeight="40.0" prefWidth="132.0" style="-fx-background-color: grey;" text="10h30 - 11h30" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_periode_5" alignment="CENTER" prefHeight="40.0" prefWidth="134.0" style="-fx-background-color: grey;" text="11h30 - 12h30" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_periode_6" alignment="CENTER" prefHeight="40.0" prefWidth="136.0" style="-fx-background-color: grey;" text="12h30 - 13h30" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="hours_periode_7" alignment="CENTER" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: grey;" text="13h30 - 14h40" GridPane.rowIndex="7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Button fx:id="loadComponent" layoutX="411.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Charger les composants">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Button>
+      <Button fx:id="saveTimesTable" disable="true" layoutX="561.0" layoutY="143.0" mnemonicParsing="false" text="Enregistrer l'emploie de temps">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

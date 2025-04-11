@@ -34,12 +34,33 @@ public class MainAppTimeController {
 	private AnchorPane mainBox;
 	
 	private Stage stage;
-	//private Scene scene;
-	//private Parent root;
+	private Scene scene;
+	private Parent root;
 	
 	@FXML
 	private void initialize() {
+		// charger un layout par default
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("./../../application/FXML_FILES/createTimeTableClasseScene.fxml"));
+    	try {
+			root = loader.load();
+			mainBox.getChildren().add(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	emploieTempsClassButton.setOnAction(event ->openEmploiTempsClasse());
 		
+	}
+	
+	private void openEmploiTempsClasse() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("./../../application/FXML_FILES/createTimeTableClasseScene.fxml"));
+    	try {
+			root = loader.load();
+			mainBox.getChildren().clear();
+			mainBox.getChildren().add(root);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void setUser(LoginSceneController.User user) {
