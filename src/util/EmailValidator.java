@@ -17,6 +17,19 @@ public class EmailValidator {
         
         return matcher.matches();
     }
+    
+    public static boolean isValidSchoolYears(String year) {
+    	// Expression régulière pour valider l'année scolaire
+        String YearsRegex = "^20\\d{2}/20\\d{2}$";
+        
+        // Création du pattern à partir de l'expression régulière
+        Pattern pattern = Pattern.compile(YearsRegex);
+        
+        // Vérification si l'année scolair correspond au pattern
+        Matcher matcher = pattern.matcher(year);
+        
+        return matcher.matches();
+    }
 
     public static void main(String[] args) {
         // Test de la fonction
