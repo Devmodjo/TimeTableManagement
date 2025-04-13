@@ -215,6 +215,39 @@ public class TimeTableClasseController {
        new DialogBox().infoAlertBox("Chargement terminé", "Les matières ont été chargées avec succès pour la classe " + selectedClass + ".");
        saveTimesTable.setDisable(false);
    }
+   
+   public void saveTimeTable() throws SQLException {
+	   
+	   try(Connection db = DBManager.connect();){
+		   // create table for all days comoboBoxes
+		   @SuppressWarnings("unchecked")
+		   ComboBox<String>[] mondayComboBoxes = new ComboBox[] {
+					   lundiCourPeriode1, lundiCoursPeriode2, lundiCourPeriode3, lundiCourPeriode4, lundiCourPeriode5, lundiCourPeriode6, lundiCourPeriode7
+		   };
+		   
+		   @SuppressWarnings("unchecked")
+		   ComboBox<String>[] tuesdayComboBoxes = new ComboBox[] {
+				   mardiCourPeriode1, mardiCourPeriode2, mardiCourPeriode3, mardiCourPeriode4, mardiCourPeriode5, mardiCourPeriode6, mardiCourPeriode7
+		   };
+		   
+		   @SuppressWarnings("unchecked")
+		   ComboBox<String>[] wednesdayComboBoxes = new ComboBox[] {
+				   mercrediCourPeriode1, mercrediCourPeriode2, mercrediCourPeriode3, mercrediCourPeriode4, mercrediCourPeriode5, mercrediCourPeriode6, mercrediCourPeriode7
+		   };
+		   
+		   @SuppressWarnings("unchecked")
+		   ComboBox<String>[] thursdayComboBoxes = new ComboBox[] {
+				   jeudiCourPeriode1, jeudiCourPeriode2, jeudiCourPeriode3, jeudiCourPeriode4, jeudiCourPeriode5, jeudiCourPeriode6, jeudiCourPeriode7
+		   };
+		   
+		   @SuppressWarnings("unchecked")
+		   ComboBox<String>[] fridayComboBoxes = new ComboBox[] {
+				   vendrediCourPeriode1, vendrediCourPeriode2, vendrediCourPeriode3, vendrediCourPeriode4, vendrediCourPeriode5, vendrediCourPeriode6, vendrediCourPeriode7
+		   };
+		   
+		
+	   }
+   }
 
 
 }
