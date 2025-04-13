@@ -26,8 +26,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="emploieTempsProfessorButton" disable="true" layoutX="12.0" layoutY="302.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" styleClass="navButton" text="Cree emploie temps Professeur" />
-            <Button layoutX="14.0" layoutY="347.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" styleClass="navButton" text="gestion des disponibilites">
+            <Button fx:id="emploieTempsProfessorButton" disable="true" layoutX="12.0" layoutY="335.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" styleClass="navButton" text="Cree emploie temps Professeur" />
+            <Button disable="true" layoutX="13.0" layoutY="378.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" styleClass="navButton" text="gestion des disponibilites">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -37,6 +37,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Button fx:id="consulterEmploieTempClassButton" layoutX="12.0" layoutY="294.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="190.0" styleClass="navButton" text="consulter un emploie de temps" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="216.0" prefHeight="640.0" prefWidth="864.0" styleClass="mainB">

@@ -137,6 +137,11 @@ public class TimeTableClasseController {
     @FXML
     private ColumnConstraints vendrediCoursColumn;
     
+    public static String[] matOfMonday = new String[7];
+    public static String[] matOfTuesday = new String[7];
+    public static String[] matOfWednesday = new String[7];
+    public static String[] matOfThursday = new String[7];
+    public static String[] matOfFriday = new String[7];
     
     
    @FXML
@@ -194,7 +199,7 @@ public class TimeTableClasseController {
        // Remplit toutes les ComboBox des jours avec les matières récupérées
        
        @SuppressWarnings("unchecked")
-	ComboBox<String>[] comboBoxes = new ComboBox[]{
+       ComboBox<String>[] comboBoxes = new ComboBox[]{
            lundiCourPeriode1, lundiCoursPeriode2, lundiCourPeriode3, lundiCourPeriode4, lundiCourPeriode5, lundiCourPeriode6, lundiCourPeriode7,
            mardiCourPeriode1, mardiCourPeriode2, mardiCourPeriode3, mardiCourPeriode4, mardiCourPeriode5, mardiCourPeriode6, mardiCourPeriode7,
            mercrediCourPeriode1, mercrediCourPeriode2, mercrediCourPeriode3, mercrediCourPeriode4, mercrediCourPeriode5, mercrediCourPeriode6, mercrediCourPeriode7,
@@ -220,30 +225,89 @@ public class TimeTableClasseController {
 	   
 	   try(Connection db = DBManager.connect();){
 		   // create table for all days comoboBoxes
+		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] mondayComboBoxes = new ComboBox[] {
 					   lundiCourPeriode1, lundiCoursPeriode2, lundiCourPeriode3, lundiCourPeriode4, lundiCourPeriode5, lundiCourPeriode6, lundiCourPeriode7
 		   };
+		   int index1 = 0;
+		   for(ComboBox<String> cb : mondayComboBoxes) {
+			   // get value foreach comboBoxes for add in array
+			   if(cb.getValue() !=null) {
+				   matOfMonday[index1] = cb.getValue().toString();
+			   }else {
+				   matOfMonday[index1] = "libre";
+			   }
+			   index1++;
+			   
+		   }
+		   
 		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] tuesdayComboBoxes = new ComboBox[] {
 				   mardiCourPeriode1, mardiCourPeriode2, mardiCourPeriode3, mardiCourPeriode4, mardiCourPeriode5, mardiCourPeriode6, mardiCourPeriode7
 		   };
+		   int index2 = 0;
+		   for(ComboBox<String> cb : tuesdayComboBoxes) {
+			   // get value foreach comboBoxes for add in array
+			   if(cb.getValue() !=null) {
+				   matOfTuesday[index2] = cb.getValue().toString();
+			   }else {
+				   matOfTuesday[index2] = "libre";
+			   }
+			   index2++;
+			   
+		   }
 		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] wednesdayComboBoxes = new ComboBox[] {
 				   mercrediCourPeriode1, mercrediCourPeriode2, mercrediCourPeriode3, mercrediCourPeriode4, mercrediCourPeriode5, mercrediCourPeriode6, mercrediCourPeriode7
 		   };
+		   int index3 = 0;
+		   for(ComboBox<String> cb : wednesdayComboBoxes) {
+			   // get value foreach comboBoxes for add in array
+			   if(cb.getValue() !=null) {
+				   matOfWednesday[index3] = cb.getValue().toString();
+			   }else {
+				   matOfWednesday[index3] = "libre";
+			   }
+			   index3++;
+			   
+		   }
 		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] thursdayComboBoxes = new ComboBox[] {
 				   jeudiCourPeriode1, jeudiCourPeriode2, jeudiCourPeriode3, jeudiCourPeriode4, jeudiCourPeriode5, jeudiCourPeriode6, jeudiCourPeriode7
 		   };
+		   int index4 = 0;
+		   for(ComboBox<String> cb : thursdayComboBoxes) {
+			   // get value foreach comboBoxes for add in array
+			   if(cb.getValue() != null) {
+				   matOfThursday[index4] = cb.getValue().toString();
+			   }else {
+				   matOfThursday[index4] = "libre";
+			   }
+			   index4++;
+			   
+		   }
 		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] fridayComboBoxes = new ComboBox[] {
 				   vendrediCourPeriode1, vendrediCourPeriode2, vendrediCourPeriode3, vendrediCourPeriode4, vendrediCourPeriode5, vendrediCourPeriode6, vendrediCourPeriode7
 		   };
+		   int index5 = 0;
+		   for(ComboBox<String> cb : fridayComboBoxes) {
+			   // get value foreach comboBoxes for add in array
+			   if(cb.getValue() !=null) {
+				   matOfFriday[index5] = cb.getValue().toString();
+			   }else {
+				   matOfFriday[index5] = "libre";
+			   }
+			   index5++;
+			   
+		   }
+		   
+		   String[][] week = {matOfMonday, matOfTuesday, matOfWednesday, matOfThursday, matOfFriday}; 
 		   
 		
 	   }
