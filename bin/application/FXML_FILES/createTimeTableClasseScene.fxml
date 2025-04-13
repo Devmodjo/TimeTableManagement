@@ -29,7 +29,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <TextField fx:id="schoolYear" layoutX="240.0" layoutY="144.0" styleClass="field" />
+      <TextField fx:id="schoolYear" layoutX="240.0" layoutY="144.0" promptText="ex: 2022/2023" styleClass="field" />
       <GridPane layoutX="16.0" layoutY="206.0" prefHeight="425.0" prefWidth="820.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="481.0" minWidth="10.0" prefWidth="430.3333435058594" />
@@ -75,41 +75,41 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ComboBox fx:id="lundiCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="lundiCoursPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="lundiCourPeriode3" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="lundiCourPeriode4" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ComboBox fx:id="lundiCourPeriode5" prefHeight="33.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="lundiCourPeriode6" prefHeight="33.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <ComboBox fx:id="lundiCourPeriode7" prefHeight="34.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <ComboBox fx:id="mardiCourPeriode1" prefHeight="31.0" prefWidth="142.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox fx:id="mardiCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ComboBox fx:id="mardiCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <ComboBox fx:id="mardiCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ComboBox fx:id="mardiCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ComboBox fx:id="mardiCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <ComboBox fx:id="mardiCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-            <ComboBox fx:id="mercrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <ComboBox fx:id="mercrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <ComboBox fx:id="mercrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ComboBox fx:id="mercrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <ComboBox fx:id="mercrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <ComboBox fx:id="mercrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-            <ComboBox fx:id="mercrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <ComboBox fx:id="jeudiCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <ComboBox fx:id="jeudiCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <ComboBox fx:id="jeudiCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-            <ComboBox fx:id="jeudiCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <ComboBox fx:id="jeudiCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-            <ComboBox fx:id="jeudiCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-            <ComboBox fx:id="jeudiCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-            <ComboBox fx:id="vendrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-            <ComboBox fx:id="vendrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-            <ComboBox fx:id="vendrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-            <ComboBox fx:id="vendrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-            <ComboBox fx:id="vendrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-            <ComboBox fx:id="vendrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <ComboBox fx:id="vendrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <ComboBox fx:id="lundiCourPeriode1" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="lundiCoursPeriode2" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="lundiCourPeriode3" prefHeight="34.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="lundiCourPeriode4" prefHeight="34.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <ComboBox fx:id="lundiCourPeriode5" prefHeight="33.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <ComboBox fx:id="lundiCourPeriode6" prefHeight="33.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ComboBox fx:id="lundiCourPeriode7" prefHeight="34.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <ComboBox fx:id="mardiCourPeriode1" prefHeight="31.0" prefWidth="142.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="mardiCourPeriode2" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="mardiCourPeriode3" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="mardiCourPeriode4" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="mardiCourPeriode5" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="mardiCourPeriode6" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="mardiCourPeriode7" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <ComboBox fx:id="mercrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <ComboBox fx:id="mercrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <ComboBox fx:id="mercrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <ComboBox fx:id="mercrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="mercrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <ComboBox fx:id="mercrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <ComboBox fx:id="mercrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <ComboBox fx:id="jeudiCourPeriode1" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <ComboBox fx:id="jeudiCourPeriode2" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <ComboBox fx:id="jeudiCourPeriode3" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <ComboBox fx:id="jeudiCourPeriode4" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <ComboBox fx:id="jeudiCourPeriode5" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <ComboBox fx:id="jeudiCourPeriode6" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <ComboBox fx:id="jeudiCourPeriode7" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <ComboBox fx:id="vendrediCourPeriode7" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+            <ComboBox fx:id="vendrediCourPeriode6" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+            <ComboBox fx:id="vendrediCourPeriode5" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <ComboBox fx:id="vendrediCourPeriode4" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <ComboBox fx:id="vendrediCourPeriode3" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <ComboBox fx:id="vendrediCourPeriode2" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <ComboBox fx:id="vendrediCourPeriode1" prefHeight="35.0" prefWidth="141.0" promptText="libre" styleClass="field" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <Label fx:id="hours_period_1" alignment="CENTER" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: grey;" text="7h30 - 8h30" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
@@ -147,12 +147,12 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="loadComponent" layoutX="411.0" layoutY="143.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="Charger les composants">
+      <Button fx:id="loadComponent" layoutX="411.0" layoutY="138.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: greenyellow;" text="Charger les composants">
          <font>
             <Font name="System Bold" size="10.0" />
          </font>
       </Button>
-      <Button fx:id="saveTimesTable" disable="true" layoutX="561.0" layoutY="143.0" mnemonicParsing="false" text="Enregistrer l'emploie de temps">
+      <Button fx:id="saveTimesTable" disable="true" layoutX="561.0" layoutY="137.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" text="Enregistrer ">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
