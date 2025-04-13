@@ -307,7 +307,7 @@ public class TimeTableClasseController {
 			   
 		   }
 		   
-		   String[][] week = {matOfMonday, matOfTuesday, matOfWednesday, matOfThursday, matOfFriday}; 
+		   String[][] week = {matOfMonday, matOfTuesday, matOfWednesday, matOfThursday, matOfFriday};
 		   
 		
 	   }
