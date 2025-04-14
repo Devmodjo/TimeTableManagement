@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import DBManager.DBManager;
 import util.DialogBox;
+import util.EmailValidator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -148,6 +149,13 @@ public class TimeTableClasseController {
    private void initialize() {
 	   classname.getItems().addAll(someClassroom());  
 	   loadComponent.setOnAction(evnt->loadComponent());
+	   saveTimesTable.setOnAction(evnt->{
+		try {
+			saveTimeTable();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	});
    }
    
    public List<String> someClassroom(){
@@ -298,7 +306,7 @@ public class TimeTableClasseController {
 		   int index5 = 0;
 		   for(ComboBox<String> cb : fridayComboBoxes) {
 			   // get value foreach comboBoxes for add in array
-			   if(cb.getValue() !=null) {
+			   if(cb.getValue() != null) {
 				   matOfFriday[index5] = cb.getValue().toString();
 			   }else {
 				   matOfFriday[index5] = "libre";
@@ -307,11 +315,62 @@ public class TimeTableClasseController {
 			   
 		   }
 		   
+		   // le pentagone en chaleur
 		   String[][] week = {matOfMonday, matOfTuesday, matOfWednesday, matOfThursday, matOfFriday};
-		   
+		   if(schoolYear.getText() != null && EmailValidator.isValidSchoolYears(schoolYear.getText())) {
+			   // inclusion de la fonctiond'insertion d'emploie de temps ici
+			   insertEmploiTemps(classname.getValue().toString(), week, schoolYear.getText() ,db);
+			   new DialogBox().infoAlertBox("SUCCESS", "nouvelle emploie de temps enregistrer avec success");
+			   
+		   }else {
+			   new DialogBox().errorAlertBox("ERREUR", "verifier les format de l'année scolaire");
+			   return;
+		   }
 		
 	   }
    }
+   
+	public void insertEmploiTemps(String className, String[][] week, String schoolYear,Connection db) throws SQLException{
+	    // Convertir chaque ligne du tableau en une chaîne de caractères
+	    String lundi = String.join(";", week[0]);
+	    String mardi = String.join(";", week[1]);
+	    String mercredi = String.join(";", week[2]);
+	    String jeudi = String.join(";", week[3]);
+	    String vendredi = String.join(";", week[4]);
+	    
+	    // requete pour selectionnez l'identifiant d'une classe
+	    String sql0 = "SELECT idClasse FROM Classe WHERE nom=?";
+	    PreparedStatement pstmt1 = db.prepareStatement(sql0);
+		pstmt1.setString(1, className);
+		ResultSet res1 = pstmt1.executeQuery();
+		int idClass = res1.getInt("idClasse");
+		
+	    // Requête SQL pour insérer l'emploi du temps
+	    String sql = "INSERT INTO EmploiTempsClasse (idClasse, lundiCours, mardiCours, mercrediCours, jeudiCours, vendrediCours, anneeScolaire) VALUES (?, ?, ?, ?, ?, ?,?)";
+
+	    try (PreparedStatement pstmt = db.prepareStatement(sql)) {
+	        pstmt.setInt(1, idClass);
+	        pstmt.setString(2, lundi);
+	        pstmt.setString(3, mardi);
+	        pstmt.setString(4, mercredi);
+	        pstmt.setString(5, jeudi);
+	        pstmt.setString(6, vendredi);
+	        pstmt.setString(7, schoolYear);
+
+	        // Exécuter l'insertion
+	        int rowsInserted = pstmt.executeUpdate();
+	        if (rowsInserted > 0) {
+	            System.out.println("Emploi du temps inséré avec succès !");
+	        } else {
+	            System.out.println("Erreur lors de l'insertion !");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("Erreur SQL : " + e.getMessage());
+	    }finally {
+	    	pstmt1.close();
+	    	res1.close();
+	    }
+	}
 
 
 }

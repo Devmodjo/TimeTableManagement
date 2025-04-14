@@ -100,14 +100,13 @@ public class DBManager {
 			String emploieTempClasse = "CREATE TABLE IF NOT EXISTS EmploiTempsClasse ("
 					+ "    idEmploiTempsClasse INTEGER PRIMARY KEY AUTOINCREMENT,"
 					+ "    idClasse INTEGER NOT NULL,"
-					+ "    idAnneeScolaire INTEGER NOT NULL,"
+					+ "    anneeScolaire TEXT NOT NULL,"
 					+ "    lundiCours TEXT,   "
 					+ "    mardiCours TEXT,"
 					+ "    mercrediCours TEXT,"
 					+ "    jeudiCours TEXT,"
 					+ "    vendrediCours TEXT,"
-					+ "    FOREIGN KEY (idClasse) REFERENCES Classe(idClasse),"
-					+ "    FOREIGN KEY (idAnneeScolaire) REFERENCES anneScolaire(idAnneeScolaire)"
+					+ "    FOREIGN KEY (idClasse) REFERENCES Classe(idClasse)"
 					+ ");";
 			stmt.execute(emploieTempClasse);
 			
