@@ -27,6 +27,8 @@ public class MainAppTimeController {
 	@FXML
 	private Button emploieTempsClassButton;
 	@FXML
+	private Button consulterEmploieTempClassButton;
+	@FXML
 	private Button emploieTempsProfessorButton;
 	@FXML
 	private Button logoutLabel;
@@ -34,7 +36,7 @@ public class MainAppTimeController {
 	private AnchorPane mainBox;
 	
 	private Stage stage;
-	private Scene scene;
+	// private Scene scene;
 	private Parent root;
 	
 	@FXML
@@ -48,6 +50,7 @@ public class MainAppTimeController {
 			e.printStackTrace();
 		}
     	emploieTempsClassButton.setOnAction(event ->openEmploiTempsClasse());
+    	consulterEmploieTempClassButton.setOnAction(event->openConsultaitiontTimtable());
 		
 	}
 	
@@ -55,6 +58,18 @@ public class MainAppTimeController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("./../../application/FXML_FILES/createTimeTableClasseScene.fxml"));
     	try {
 			root = loader.load();
+			mainBox.getChildren().clear();
+			mainBox.getChildren().add(root);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void openConsultaitiontTimtable() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("./../../application/FXML_FILES/ConsultationTimeTableScene.fxml"));
+    	try {
+			Parent root = loader.load();
 			mainBox.getChildren().clear();
 			mainBox.getChildren().add(root);
 			
