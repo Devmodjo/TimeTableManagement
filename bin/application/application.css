@@ -60,3 +60,33 @@ ComboBox{
 	-fx-border-radius:10px;
 	-fx-text-fill:black;
 }
+
+/** style de TableView */
+.table-view {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: grey; 
+    -fx-border-radius: 5;
+    -fx-padding: 5px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #3f51b5;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 20px;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #ffffff;
+}
+
+.table-view .table-row-cell:filled:selected, .table-view .table-row-cell:focused:selected {
+    -fx-background-color: #90caf9;
+    -fx-text-fill: black;
+}
+
+.table-view .table-cell {
+    /*-fx-alignment: CENTER;*/
+    /*-fx-font-size: 14px;*/
+}
