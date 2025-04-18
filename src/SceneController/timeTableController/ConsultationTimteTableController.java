@@ -1,5 +1,8 @@
 package SceneController.timeTableController;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,7 +60,7 @@ public class ConsultationTimteTableController {
     public List<String> listClaroomCell;
     public List<Boolean> listDisponibilitieCell;
     public List<Integer> listsavedTimeTable;
-    public LigneEmploiTemps ligneEmploiTemps;
+    protected LigneEmploiTemps ligneEmploiTemps;
     
     // ---------------- property for popup consultation
     
@@ -71,6 +74,13 @@ public class ConsultationTimteTableController {
     	});
     	consultButton.setOnAction(evnt->{
     		SpawnConsultationPopup(ligneEmploiTemps);
+    	});
+    	tableViewListEmploieTemps.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+    	    if (newSel != null) {
+    	        this.ligneEmploiTemps = newSel;
+    	        consultButton.setDisable(false);
+    	        System.out.println("Ligne sélectionnée : " + newSel.getClasse());
+    	    }
     	});
     }
     
@@ -238,6 +248,9 @@ public class ConsultationTimteTableController {
     		LigneEmploiTemps lg = tableViewListEmploieTemps.getSelectionModel().getSelectedItem(); 
     		if(lg != null)
     			this.ligneEmploiTemps = lg;
+    			// ecriture de la classe selectionner dans le fichier
+    			saveSession(this.ligneEmploiTemps);
+    			
 	    		consultButton.setDisable(false);
 	    		System.out.println("element du tableau selectionné : " + lg.getClasse());
     		
@@ -254,7 +267,10 @@ public class ConsultationTimteTableController {
     		
     		// Récupération du contrôleur
     		ConsultationPopup controller = loader.getController();
-            controller.setLigneEmploiTemps(lg);
+    		if (this.ligneEmploiTemps != null)
+    			controller.setLigneEmploiTemps(this.ligneEmploiTemps);
+    		else
+    			new DialogBox().errorAlertBox("ERROR", "veuillez selectionnez une ligne avant de consulter le tableau");
     		
     		Scene scene = new Scene(root);
     		Stage stage = new Stage();
@@ -267,6 +283,19 @@ public class ConsultationTimteTableController {
     	} catch(Exception e) {
     		e.printStackTrace();
     		new DialogBox().errorAlertBox("Erreur", "Erreur lors de l’ouverture de la popup :\n" + e.getMessage()); 
+    	}
+    }
+    
+    @SuppressWarnings("unused")
+	private void saveSession(LigneEmploiTemps line) throws IOException {
+    	// creation du fichier de session
+    	try(BufferedWriter writer = new BufferedWriter(new FileWriter("session_temps.txt"))) {
+    		// ecrite dans le fichier
+    		writer.write(line.getClasse());
+    		System.out.println("ecriture dans le fichier effectuer avec succes");
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    		new DialogBox().errorAlertBox("ERROR", "une erreur est survenue " + e.getMessage());
     	}
     }
 }

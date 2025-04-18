@@ -10,11 +10,17 @@ public class LigneEmploiTemps {
     private String classe;
     private String disponibilite;
     private String nombre;
+    private String numeroEmploieTemps;
+    private String schoolYear;
 
     public LigneEmploiTemps(String classe, String disponibilite, String nombre) {
         this.classe = classe;
         this.disponibilite = disponibilite;
         this.nombre = nombre;
+    }
+    
+    public LigneEmploiTemps(String schoolYear) {
+    	this.schoolYear = schoolYear;
     }
 
     public String getClasse() {
@@ -40,4 +46,20 @@ public class LigneEmploiTemps {
     public void setNombre(String nombre) {
     	this.nombre = nombre;
     }
+
+	public String getNumeroEmploieTemps() {
+		return numeroEmploieTemps;
+	}
+
+	public void setNumeroEmploieTemps(String numeroEmploieTemps) {
+		this.numeroEmploieTemps = numeroEmploieTemps;
+	}
+
+	public String getSchoolYear() {
+		return schoolYear;
+	}
+
+	public void setSchoolYear(String schoolYear) {
+		this.schoolYear = schoolYear;
+	}
 }
