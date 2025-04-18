@@ -9,6 +9,7 @@ import java.util.List;
 
 import DBManager.DBManager;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
@@ -56,13 +57,16 @@ public class ConsultationTimteTableController {
     private void initialize() throws SQLException {
     	FillTableView();
     	updateTableView();
+    	searhBar.textProperty().addListener((ObservableList, oldValue, newValue)->{
+    		filterData(newValue);
+    	});;
     }
     
     // constructor...
     public ConsultationTimteTableController() throws SQLException {
-    	this.listClaroomCell = getListClassroom();
-    	this.listDisponibilitieCell = getDisponibilitie();
-    	this.listsavedTimeTable = getListTimeTableSaved();
+    	 this.listClaroomCell = getListClassroom();
+    	 this.listDisponibilitieCell = getDisponibilitie();
+    	 this.listsavedTimeTable = getListTimeTableSaved();
     }
     
     public void FillTableView() throws SQLException{
@@ -181,9 +185,34 @@ public class ConsultationTimteTableController {
         nbreSaveColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("nombre"));
     }
     
-    public void filterData() throws SQLException{
-    	// searchBar
-    	
+    public void filterData(String search) {
+        try {
+            ObservableList<LigneEmploiTemps> fullList = FXCollections.observableArrayList();
+
+            // On reconstruit toute la liste avec les 3 colonnes
+            for (int i = 0; i < listClaroomCell.size(); i++) {
+                String classe = listClaroomCell.get(i);
+                String disponibilite = listDisponibilitieCell.get(i) ? "Disponible" : "Indisponible";
+                String nombre = String.valueOf(listsavedTimeTable.get(i));
+
+                fullList.add(new LigneEmploiTemps(classe, disponibilite, nombre));
+            }
+
+            // On filtre la liste selon la recherche
+            ObservableList<LigneEmploiTemps> filteredList = FXCollections.observableArrayList();
+            for (LigneEmploiTemps ligne : fullList) {
+                if (ligne.getClasse().toLowerCase().contains(search.toLowerCase())) {
+                    filteredList.add(ligne);
+                }
+            }
+
+            // On applique le résultat à la TableView
+            tableViewListEmploieTemps.setItems(filteredList);
+
+        } catch (Exception e) {
+            new DialogBox().errorAlertBox("Erreur", "Une erreur est survenue sur la barre de recherche : " + e.getMessage());
+        }
     }
+
     
 }
