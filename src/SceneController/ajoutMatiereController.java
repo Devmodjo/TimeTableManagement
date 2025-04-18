@@ -80,7 +80,7 @@ public class ajoutMatiereController{
                 ps.executeUpdate();
                 
                 fieldAddMat.clear();
-                classlist.setValue(null);
+                // classlist.setValue(null);
                 updateTableView();
                 
                 boxDialog.infoAlertBox(SAVE_SUCCESS, "Nouvelle matière enregistrée");
@@ -151,7 +151,7 @@ public class ajoutMatiereController{
 
     public ObservableList<Matiere> getListMatiere() throws SQLException {
         ObservableList<Matiere> listMatiere = FXCollections.observableArrayList();
-        String sql = "SELECT DISTINCT * FROM matiere";
+        String sql = "SELECT DISTINCT * FROM matiere ORDER BY nom_classe ASC";
         
         try (Connection con = DBManager.connect();
              PreparedStatement stmt = con.prepareStatement(sql);
