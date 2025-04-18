@@ -23,7 +23,7 @@
                               <Font size="21.0" />
                            </font>
                         </Label>
-                        <TableView fx:id="tableViewListEmploieTemps" layoutX="42.0" layoutY="180.0" prefHeight="402.0" prefWidth="721.0">
+                        <TableView fx:id="tableViewListEmploieTemps" layoutX="42.0" layoutY="180.0" onMouseClicked="#mouClicked" prefHeight="402.0" prefWidth="721.0">
                           <columns>
                             <TableColumn fx:id="classeColumn" prefWidth="215.0" text="Classe" />
                             <TableColumn fx:id="disponibiliteColumn" prefWidth="227.0" text="Disponibilité" />

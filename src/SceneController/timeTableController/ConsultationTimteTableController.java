@@ -52,11 +52,13 @@ public class ConsultationTimteTableController {
     public List<String> listClaroomCell;
     public List<Boolean> listDisponibilitieCell;
     public List<Integer> listsavedTimeTable;
+    public LigneEmploiTemps ligneEmploiTemps;
     
     @FXML
     private void initialize() throws SQLException {
     	FillTableView();
     	updateTableView();
+    	mouClicked();
     	searhBar.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
     	});;
@@ -212,6 +214,32 @@ public class ConsultationTimteTableController {
         } catch (Exception e) {
             new DialogBox().errorAlertBox("Erreur", "Une erreur est survenue sur la barre de recherche : " + e.getMessage());
         }
+    }
+    
+    public static String cl;
+    public static String dispo;
+    public static String nbr;
+    
+    @FXML
+    public void mouClicked() {
+    	/* evenement de click sur le tableau */
+    	for (int i = 0; i < listClaroomCell.size(); i++) {
+            cl = listClaroomCell.get(i);
+            dispo = listDisponibilitieCell.get(i) ? "Disponible" : "Indisponible";
+            nbr = String.valueOf(listsavedTimeTable.get(i));
+        }
+    	
+    	try {
+    		LigneEmploiTemps lg = tableViewListEmploieTemps.getSelectionModel().getSelectedItem(); 
+    		lg = new LigneEmploiTemps(cl, dispo, nbr);
+    		this.ligneEmploiTemps = lg;
+    		
+    		consultButton.setDisable(false);
+    		System.out.println("element du tableau selectionné");
+    		
+    	} catch(Exception e) {
+    		// lol
+    	}
     }
 
     
