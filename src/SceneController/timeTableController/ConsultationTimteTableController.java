@@ -11,12 +11,17 @@ import DBManager.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import util.DialogBox;
 import util.LigneEmploiTemps;
 
@@ -55,21 +60,7 @@ public class ConsultationTimteTableController {
     public LigneEmploiTemps ligneEmploiTemps;
     
     // ---------------- property for popup consultation
-    @FXML
-    private TableColumn<?, ?> numberTimeTableColumn;
-
-    @FXML
-    private Button printButton;
-
-    @FXML
-    private TableColumn<?, ?> schoolYearColumn;
-
-    @FXML
-    private TextField searbarClasse;
-
-    @FXML
-    private TableView<?> viewTimeTableClasse;
-    // --------------------------------------
+    
     
     @FXML
     private void initialize() throws SQLException {
@@ -77,6 +68,9 @@ public class ConsultationTimteTableController {
     	updateTableView();
     	searhBar.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
+    	});
+    	consultButton.setOnAction(evnt->{
+    		SpawnConsultationPopup(ligneEmploiTemps);
     	});
     }
     
@@ -239,26 +233,40 @@ public class ConsultationTimteTableController {
     @FXML
     public void mouClicked() {
     	/* evenement de click sur le tableau */
-    	for (int i = 0; i < listClaroomCell.size(); i++) {
-            cl = listClaroomCell.get(i);
-            dispo = listDisponibilitieCell.get(i) ? "Disponible" : "Indisponible";
-            nbr = String.valueOf(listsavedTimeTable.get(i));
-        }
     	
     	try {
     		LigneEmploiTemps lg = tableViewListEmploieTemps.getSelectionModel().getSelectedItem(); 
-    		lg = new LigneEmploiTemps(cl, dispo, nbr);
-    		this.ligneEmploiTemps = lg;
-    		
-    		consultButton.setDisable(false);
-    		System.out.println("element du tableau selectionné");
+    		if(lg != null)
+    			this.ligneEmploiTemps = lg;
+	    		consultButton.setDisable(false);
+	    		System.out.println("element du tableau selectionné : " + lg.getClasse());
     		
     	} catch(Exception e) {
     		// lol
     	}
     }
     
-    public void SpawnConsultationPopup(){
+    public void SpawnConsultationPopup(LigneEmploiTemps lg){
     	// permet d'afficher la popup
+    	try {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/FXML_FILES/PopupConsultationScene.fxml"));
+    		Parent root = loader.load();
+    		
+    		// Récupération du contrôleur
+    		ConsultationPopup controller = loader.getController();
+            controller.setLigneEmploiTemps(lg);
+    		
+    		Scene scene = new Scene(root);
+    		Stage stage = new Stage();
+    		stage.setScene(scene);
+    		stage.setTitle("Liste Emploie de Temps - "+ lg.getClasse());
+    		stage.setResizable(false);
+    		stage.initModality(Modality.APPLICATION_MODAL);
+    		stage.showAndWait();
+    		
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    		new DialogBox().errorAlertBox("Erreur", "Erreur lors de l’ouverture de la popup :\n" + e.getMessage()); 
+    	}
     }
 }
