@@ -54,14 +54,30 @@ public class ConsultationTimteTableController {
     public List<Integer> listsavedTimeTable;
     public LigneEmploiTemps ligneEmploiTemps;
     
+    // ---------------- property for popup consultation
+    @FXML
+    private TableColumn<?, ?> numberTimeTableColumn;
+
+    @FXML
+    private Button printButton;
+
+    @FXML
+    private TableColumn<?, ?> schoolYearColumn;
+
+    @FXML
+    private TextField searbarClasse;
+
+    @FXML
+    private TableView<?> viewTimeTableClasse;
+    // --------------------------------------
+    
     @FXML
     private void initialize() throws SQLException {
     	FillTableView();
     	updateTableView();
-    	mouClicked();
     	searhBar.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
-    	});;
+    	});
     }
     
     // constructor...
@@ -241,6 +257,8 @@ public class ConsultationTimteTableController {
     		// lol
     	}
     }
-
     
+    public void SpawnConsultationPopup(){
+    	// permet d'afficher la popup
+    }
 }
