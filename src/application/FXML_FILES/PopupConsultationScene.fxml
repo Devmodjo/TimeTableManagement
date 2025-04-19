@@ -9,13 +9,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="405.0" prefWidth="545.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController.timeTableController.ConsultationPopup">
    <children>
-      <TableView fx:id="viewTimeTableClasse" layoutY="50.0" prefHeight="355.0" prefWidth="356.0">
+      <TableView fx:id="viewTimeTableClasse" layoutY="50.0" onMouseClicked="#mouseclickedConsultation" prefHeight="355.0" prefWidth="356.0">
         <columns>
           <TableColumn fx:id="schoolYearColumn" prefWidth="355.0" text="année scolaire" />
         </columns>
       </TableView>
       <TextField fx:id="searbarClasse" layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="272.0" promptText="rechercher par an..." />
-      <Button fx:id="printButton" layoutX="389.0" layoutY="62.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="IMPRIMER">
+      <Button fx:id="printButton" disable="true" layoutX="389.0" layoutY="62.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="IMPRIMER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>

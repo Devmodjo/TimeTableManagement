@@ -47,8 +47,9 @@ public class ConsultationPopup{
     }
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() throws IOException, Exception {
     	updateTableView();
+    	mouseclickedConsultation();
     	searbarClasse.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
     	});
@@ -123,6 +124,22 @@ public class ConsultationPopup{
     		new DialogBox().errorAlertBox("ERROR", "une erreur est survenue :"+ e.getMessage());
     		e.printStackTrace();
     	}
+    }
+    
+    @FXML
+    public void mouseclickedConsultation()  {
+    	
+    	try {
+    		LigneEmploiTemps lgt = viewTimeTableClasse.getSelectionModel().getSelectedItem();
+        	lgt = new LigneEmploiTemps(lgt.getSchoolYear());
+        	this.ligneEmploiTemps = lgt;
+        	
+        	printButton.setDisable(false);
+    	} catch(Exception e) {
+    		// lol
+    	}
+    		
+    	
     }
 
 }
