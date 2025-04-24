@@ -13,10 +13,12 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javafx.scene.paint.Color;
+
 
 public class GeneratePDF {
 
-	public static void printByClass(String classname, String schoolYear ,String path) throws IOException, DocumentException{
+	public static void printByClass(String classname, String schoolYear, List<String>listJournaliere  ,String path) throws IOException, DocumentException{
 	
 		final String[] listHoraire = new String[] {
 				"7h30 - 8h30", 
@@ -28,8 +30,18 @@ public class GeneratePDF {
 				"13h30 - 14h40"
 		};
 		final String duree = "1h";
+		final String[] listDay = { "lundi",  "mardi", "mercredi", "jeudi", "vendredi"};
 		
-		/* processus d'impression d'emploie de temps */
+		// convertir l'arrayList en tableau 2D
+		int jours = listJournaliere.size();
+		String[][] tableau = new String[jours][];
+		
+		for(int i=0; i<jours; i++) {
+			String line = listJournaliere.get(i);
+			String[] matJour = line.split(";");
+			tableau[i] = matJour;
+			
+		}
 		
 		// creation et ouverture du document
 		Document document = new Document();
@@ -39,10 +51,13 @@ public class GeneratePDF {
 		// police
 		Font font  = FontFactory.getFont(FontFactory.HELVETICA, 14, Font.BOLD);
 		Font font2 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.BOLD);
+		Font font3 = FontFactory.getFont(FontFactory.COURIER_BOLD, 17, Font.BOLD);
 		
-		// cree tableau a 4 dimension
+		 // cree tableau a 4 dimension
 		 PdfPTable table = new PdfPTable(new float[]{2, 3, 4, 2});
          table.setWidthPercentage(100);
+         
+         Phrase header = new Phrase("EMPLOI DE TEMPS DE LA " + classname + "année scolaire : " + schoolYear);
          
          // entete
          table.addCell(new PdfPCell(new Phrase("Jour", font)));
@@ -50,22 +65,23 @@ public class GeneratePDF {
          table.addCell(new PdfPCell(new Phrase("Discipline", font)));
          table.addCell(new PdfPCell(new Phrase("Durée", font)));
          
-		
+         
+         // processus de generation et d'impression du document
+         for(int j=0; j<tableau.length; j++) {
+        	 // affichage des jours
+        	 table.addCell(new PdfPCell(new Phrase(listDay[j], font2))); // jour
+        	 
+        	 for(int k=0; k<tableau[j].length; k++) {
+        		 // matiere
+                 table.addCell(new PdfPCell(new Phrase(listHoraire[j], font2))); // horaire
+                 table.addCell(new PdfPCell(new Phrase(tableau[j][k], font2))); // discipline
+                 table.addCell(new PdfPCell(new Phrase(duree, font2))); // duree
+        	 }
+         }
+         
+         document.add(table);
+         document.close();
 	}
 	
-	
-	public static String[][] convertToArray(List<String> listJournalière) {
-		int jours = listJournalière.size();
-		String[][] tableau = new String[jours][];
-		
-		for(int i=0; i<jours; i++) {
-			String line = listJournalière.get(i);
-			String[] matJour = line.split(";");
-			tableau[i] = matJour;
-			
-			
-		}
-		return null; 
-	}
 	
 }
