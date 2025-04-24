@@ -14,6 +14,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.itextpdf.text.DocumentException;
+
 import DBManager.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import util.LigneEmploiTemps;
+import util.GeneratePDF;
 import util.DialogBox;
 
 public class ConsultationPopup{
@@ -232,6 +236,16 @@ public class ConsultationPopup{
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             return reader.readLine();
         }
+    }
+    
+    public void printTimeTable() throws DocumentException {
+    	try(BufferedReader read = new BufferedReader(new FileReader("session_temps.txt"))) {
+			List<String> getTimeTable = getEmploieTemps(this.ligneEmploiTemps.getSchoolYear());
+			GeneratePDF.printByClass(read.readLine(), this.ligneEmploiTemps.getSchoolYear() , getTimeTable , "/");
+			
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
     }
     
 }
