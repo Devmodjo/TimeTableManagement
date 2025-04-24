@@ -1,14 +1,19 @@
 package SceneController.timeTableController;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 import DBManager.DBManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +45,9 @@ public class ConsultationPopup{
     
     @SuppressWarnings("unused")
 	private LigneEmploiTemps ligneEmploiTemps;
+    public static String[] arrayMatiere = new String[7];
+    private final String SESSION_ANNE_PATH = System.getProperty("user.home") + File.separator + "session_anne.txt";
+    
     
     public void setLigneEmploiTemps(LigneEmploiTemps ligne) {
         this.ligneEmploiTemps = ligne;
@@ -49,10 +57,11 @@ public class ConsultationPopup{
     @FXML
     public void initialize() throws IOException, Exception {
     	updateTableView();
-    	mouseclickedConsultation();
+    	//mouseclickedConsultation();
     	searbarClasse.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
     	});
+
     	
     }
     
@@ -130,16 +139,99 @@ public class ConsultationPopup{
     public void mouseclickedConsultation()  {
     	
     	try {
+    		
     		LigneEmploiTemps lgt = viewTimeTableClasse.getSelectionModel().getSelectedItem();
+    		if (lgt == null) {
+                System.out.println("Aucune ligne sélectionnée");
+                return;
+            }
         	lgt = new LigneEmploiTemps(lgt.getSchoolYear());
         	this.ligneEmploiTemps = lgt;
+        	System.out.println("recuperation : " + ligneEmploiTemps.getSchoolYear());
+        	
+        	System.out.println(getEmploieTemps(this.ligneEmploiTemps.getSchoolYear()));
         	
         	printButton.setDisable(false);
-    	} catch(Exception e) {
+        	
+    	} catch(Exception  e) {
     		// lol
     	}
     		
-    	
     }
 
+    @SuppressWarnings({ "static-access", "resource" })
+	public List<String> getEmploieTemps(String anneeScolaire) throws SQLException, IOException{
+    
+    	PreparedStatement pstmt = null;
+    	ResultSet rs = null;
+    	BufferedReader readerClasse = null;
+    	List<String> listMatiere = new ArrayList<String>();
+    	
+    	try(Connection con = DBManager.connect();){
+    	String sql = "SELECT lundiCours, "
+    			+ "mardiCours, mercrediCours, jeudiCours,"
+    			+ "vendrediCours FROM EmploiTempsClasse  WHERE anneeScolaire = ? "
+    			+ "AND idClasse = ( SELECT idClasse FROM Classe WHERE nom=? )";
+    	 
+    		readerClasse = new BufferedReader(new FileReader("session_temps.txt"));
+    		String[] jours = {"lundiCours", "mardiCours", "mercrediCours", "jeudiCours", "vendrediCours"};
+    		
+    		pstmt = con.prepareStatement(sql);
+    		pstmt.setString(1, anneeScolaire);
+    		pstmt.setString(2, readerClasse.readLine());
+    		
+    		rs = pstmt.executeQuery();
+    		if(rs.next()) {
+    			for (String jour : jours) {
+    				String matiere = rs.getString(jour);
+    				// convertir chaque matiere recupere en tableau
+    				//this.arrayMatiere = matiere.split(";");
+    				//System.out.println("matiere du " + jour + ": " + matiere);
+    				listMatiere.add(matiere);
+    			}
+    		}
+    		
+    		
+    		
+    	} finally {
+    		if (rs != null) rs.close();
+    		if(pstmt != null) pstmt.close();
+    		if(readerClasse != null) readerClasse.close();
+    		
+    	}
+    	
+    	return listMatiere;
+    }
+    
+    @SuppressWarnings("unused")
+	private void saveSessionYear(String year) throws IOException {
+    	
+    	File file = new File(SESSION_ANNE_PATH);
+    	// cree d'abord le fichier
+    	if(file.createNewFile()) {
+    		System.out.println("fichier cree : " + SESSION_ANNE_PATH);
+    	}else {
+    		System.out.println("fichier deja existant :" + SESSION_ANNE_PATH);
+    	}
+    	
+    	try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
+    		writer.write(year);
+    	} catch(Exception e) {
+    		System.err.println("une erreur est survenue lors de l'ecriture de l'anne dans le fichier");
+    	}
+    	
+    }
+    
+    @SuppressWarnings("unused")
+	private String getSavedSessionYear() throws IOException {
+        File file = new File(SESSION_ANNE_PATH);
+        if (!file.exists()) {
+            throw new FileNotFoundException("Fichier session_anne.txt introuvable à : " + SESSION_ANNE_PATH);
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            return reader.readLine();
+        }
+    }
+    
 }
