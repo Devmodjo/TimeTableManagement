@@ -13,7 +13,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javafx.scene.paint.Color;
+
 
 
 public class GeneratePDF {
@@ -57,7 +57,10 @@ public class GeneratePDF {
 		 PdfPTable table = new PdfPTable(new float[]{2, 3, 4, 2});
          table.setWidthPercentage(100);
          
-         Phrase header = new Phrase("EMPLOI DE TEMPS DE LA " + classname + "année scolaire : " + schoolYear);
+         // titre du document
+         Paragraph header = new Paragraph("EMPLOI DE TEMPS DE LA " + classname + " année scolaire : " + schoolYear, font3);
+         header.setSpacingAfter(10);
+         document.add(header);
          
          // entete
          table.addCell(new PdfPCell(new Phrase("Jour", font)));
@@ -69,11 +72,15 @@ public class GeneratePDF {
          // processus de generation et d'impression du document
          for(int j=0; j<tableau.length; j++) {
         	 // affichage des jours
-        	 table.addCell(new PdfPCell(new Phrase(listDay[j], font2))); // jour
+        	 //table.addCell(new PdfPCell(new Phrase(listDay[j], font2)));
+        	 String[] matiere = tableau[j];
+        	 PdfPCell jourCell = new PdfPCell(new Phrase(listDay[j], font));
+        	 jourCell.setRowspan(matiere.length);
+        	 table.addCell(jourCell);
         	 
-        	 for(int k=0; k<tableau[j].length; k++) {
+        	 for(int k=0; k < tableau[j].length; k++) {
         		 // matiere
-                 table.addCell(new PdfPCell(new Phrase(listHoraire[j], font2))); // horaire
+                 table.addCell(new PdfPCell(new Phrase(listHoraire[k], font2))); // horaire
                  table.addCell(new PdfPCell(new Phrase(tableau[j][k], font2))); // discipline
                  table.addCell(new PdfPCell(new Phrase(duree, font2))); // duree
         	 }

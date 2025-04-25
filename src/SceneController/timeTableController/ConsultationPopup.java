@@ -26,6 +26,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import util.LigneEmploiTemps;
 import util.GeneratePDF;
 import util.DialogBox;
@@ -59,13 +61,20 @@ public class ConsultationPopup{
     }
 
     @FXML
-    public void initialize() throws IOException, Exception {
+    public void initialize() throws IOException, Exception, DocumentException {
     	updateTableView();
     	//mouseclickedConsultation();
     	searbarClasse.textProperty().addListener((ObservableList, oldValue, newValue)->{
     		filterData(newValue);
     	});
 
+    	printButton.setOnAction(event ->{
+    		try {
+				printTimeTable();
+			} catch (DocumentException e) {
+				e.printStackTrace();
+			}
+    	});
     	
     }
     
@@ -240,8 +249,31 @@ public class ConsultationPopup{
     
     public void printTimeTable() throws DocumentException {
     	try(BufferedReader read = new BufferedReader(new FileReader("session_temps.txt"))) {
-			List<String> getTimeTable = getEmploieTemps(this.ligneEmploiTemps.getSchoolYear());
-			GeneratePDF.printByClass(read.readLine(), this.ligneEmploiTemps.getSchoolYear() , getTimeTable , "/");
+    		
+    		Stage stage = (Stage) printButton.getScene().getWindow();
+    		String classname = read.readLine();
+    		
+    		FileChooser fileChooser = new FileChooser();
+    		fileChooser.setTitle("Enregistrer sous...");
+    		
+    		// definition de l'extension
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier PDF", "*.pdf"));
+            
+            // suggere un nom de fichier
+            fileChooser.setInitialFileName("emploi_temps_"+classname+"_"+this.ligneEmploiTemps.getSchoolYear()+".pdf");
+            
+            // ouvrir la FileChooser
+            File selectedFile = fileChooser.showSaveDialog(stage);
+    		
+			
+			if(selectedFile != null) {
+				List<String> getTimeTable = getEmploieTemps(this.ligneEmploiTemps.getSchoolYear());
+				GeneratePDF.printByClass(classname, this.ligneEmploiTemps.getSchoolYear() , getTimeTable , selectedFile.getAbsolutePath());
+				new DialogBox().infoAlertBox("ENREGISTREMENT OK", "le document a bien été enregistrer");
+				
+			}else {
+				new DialogBox().errorAlertBox("ERROR", "une erreur est survenue");
+			}
 			
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
