@@ -272,7 +272,7 @@ public class ConsultationPopup{
 				new DialogBox().infoAlertBox("ENREGISTREMENT OK", "le document a bien été enregistrer");
 				
 			}else {
-				new DialogBox().errorAlertBox("ERROR", "une erreur est survenue");
+				new DialogBox().errorAlertBox("ATTENTION", "aucun repertoire selectionné");
 			}
 			
 		} catch (SQLException | IOException e) {
