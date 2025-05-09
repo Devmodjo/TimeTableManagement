@@ -29,7 +29,9 @@ import util.DialogBox;
 import util.LigneEmploiTemps;
 
 public class ConsultationTimteTableController {
-
+	
+	// -------------- propriété pour la consultation par classe
+	
     @FXML
     private TabPane TabPaneConsultation;
 
