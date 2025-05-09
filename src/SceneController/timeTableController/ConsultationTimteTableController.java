@@ -64,7 +64,7 @@ public class ConsultationTimteTableController {
     public List<Integer> listsavedTimeTable;
     protected LigneEmploiTemps ligneEmploiTemps;
     
-    // ---------------- property for popup consultation
+    // ---------------- proprièté de la tabPane de genereation de l'emploie de temps de l'etablissement
     
     
     @FXML
@@ -300,4 +300,6 @@ public class ConsultationTimteTableController {
     		new DialogBox().errorAlertBox("ERROR", "une erreur est survenue " + e.getMessage());
     	}
     }
+    
+    // -------------- gestionnaire de consultation de l'emploie de temps pour l'etablissement
 }
