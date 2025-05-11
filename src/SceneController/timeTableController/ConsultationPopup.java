@@ -260,7 +260,7 @@ public class ConsultationPopup{
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichier PDF", "*.pdf"));
             
             // suggere un nom de fichier
-            fileChooser.setInitialFileName("emploi_temps_"+classname+"_"+this.ligneEmploiTemps.getSchoolYear()+".pdf");
+            fileChooser.setInitialFileName("emploi_temps_"+classname+"_"+this.ligneEmploiTemps.getSchoolYear().replace("/", "-")+".pdf");
             
             // ouvrir la FileChooser
             File selectedFile = fileChooser.showSaveDialog(stage);

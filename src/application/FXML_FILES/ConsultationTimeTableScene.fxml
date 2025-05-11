@@ -41,7 +41,11 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Button fx:id="generateEtablissement" layoutX="576.0" layoutY="138.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="ET établissement" />
+                        <Button fx:id="generateEtablissement" layoutX="576.0" layoutY="138.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="ET établissement">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>

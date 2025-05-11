@@ -243,7 +243,7 @@ public class TimeTableClasseController {
 			   if(cb.getValue() !=null) {
 				   matOfMonday[index1] = cb.getValue().toString();
 			   }else {
-				   matOfMonday[index1] = "libre";
+				   matOfMonday[index1] = " ";
 			   }
 			   index1++;
 			   
@@ -260,7 +260,7 @@ public class TimeTableClasseController {
 			   if(cb.getValue() !=null) {
 				   matOfTuesday[index2] = cb.getValue().toString();
 			   }else {
-				   matOfTuesday[index2] = "libre";
+				   matOfTuesday[index2] = " ";
 			   }
 			   index2++;
 			   
@@ -276,7 +276,7 @@ public class TimeTableClasseController {
 			   if(cb.getValue() !=null) {
 				   matOfWednesday[index3] = cb.getValue().toString();
 			   }else {
-				   matOfWednesday[index3] = "libre";
+				   matOfWednesday[index3] = " ";
 			   }
 			   index3++;
 			   
@@ -292,7 +292,7 @@ public class TimeTableClasseController {
 			   if(cb.getValue() != null) {
 				   matOfThursday[index4] = cb.getValue().toString();
 			   }else {
-				   matOfThursday[index4] = "libre";
+				   matOfThursday[index4] = " ";
 			   }
 			   index4++;
 			   
@@ -308,7 +308,7 @@ public class TimeTableClasseController {
 			   if(cb.getValue() != null) {
 				   matOfFriday[index5] = cb.getValue().toString();
 			   }else {
-				   matOfFriday[index5] = "libre";
+				   matOfFriday[index5] = " ";
 			   }
 			   index5++;
 			   

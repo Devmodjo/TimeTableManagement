@@ -80,6 +80,9 @@ public class ConsultationTimteTableController {
     	consultButton.setOnAction(evnt->{
     		SpawnConsultationPopup(ligneEmploiTemps);
     	});
+    	generateEtablissement.setOnAction(evnt->{
+    		SpawnGeneratePopup();
+    	});
     	tableViewListEmploieTemps.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
     	    if (newSel != null) {
     	        this.ligneEmploiTemps = newSel;
@@ -265,7 +268,11 @@ public class ConsultationTimteTableController {
     }
     
     public void SpawnConsultationPopup(LigneEmploiTemps lg){
-    	// permet d'afficher la popup
+    
+    	/*
+    	 * affichage de la popup d'impression des emploi par classe
+    	 * */
+    	
     	try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/FXML_FILES/PopupConsultationScene.fxml"));
     		Parent root = loader.load();
@@ -281,6 +288,37 @@ public class ConsultationTimteTableController {
     		Stage stage = new Stage();
     		stage.setScene(scene);
     		stage.setTitle("Liste Emploie de Temps - "+ lg.getClasse());
+    		stage.setResizable(false);
+    		stage.initModality(Modality.APPLICATION_MODAL);
+    		stage.showAndWait();
+    		
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    		new DialogBox().errorAlertBox("Erreur", "Erreur lors de l’ouverture de la popup :\n" + e.getMessage()); 
+    	}
+    }
+    
+    public void SpawnGeneratePopup(){
+    	/*
+    	 * affichage de la popup pour generer l'emploi de l'etablissement
+    	 * */
+    	
+    	try {
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/FXML_FILES/GeneratePopupScene.fxml"));
+    		Parent root = loader.load();
+    		
+    		// Récupération du contrôleur
+    		/*ConsultationPopup controller = loader.getController();
+    		if (this.ligneEmploiTemps != null)
+    			controller.setLigneEmploiTemps(this.ligneEmploiTemps);
+    		else
+    			new DialogBox().errorAlertBox("ERROR", "veuillez selectionnez une ligne avant de consulter le tableau");
+    		*/
+    		
+    		Scene scene = new Scene(root);
+    		Stage stage = new Stage();
+    		stage.setScene(scene);
+    		stage.setTitle("Générer l'emploie de temps de l'établissement");
     		stage.setResizable(false);
     		stage.initModality(Modality.APPLICATION_MODAL);
     		stage.showAndWait();

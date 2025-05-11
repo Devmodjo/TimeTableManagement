@@ -41,19 +41,11 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Consultation Etablissement">
-            <content>
-              <AnchorPane fx:id="consulationEtablissementScene" minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="864.0" styleClass="box-scene">
-                     <children>
-                        <Label layoutX="42.0" layoutY="36.0" text="Consultation de l'emploie de temps de l'établissement">
+                        <Button fx:id="generateEtablissement" layoutX="576.0" layoutY="138.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="ET établissement">
                            <font>
-                              <Font size="21.0" />
+                              <Font name="System Bold" size="11.0" />
                            </font>
-                        </Label>
+                        </Button>
                      </children>
                   </AnchorPane>
             </content>
