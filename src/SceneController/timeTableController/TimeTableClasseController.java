@@ -1,5 +1,4 @@
 package SceneController.timeTableController;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -249,7 +248,7 @@ public class TimeTableClasseController {
 			   index1++;
 			   
 		   }
-		   
+		    
 		   
 		   @SuppressWarnings("unchecked")
 		   ComboBox<String>[] tuesdayComboBoxes = new ComboBox[] {

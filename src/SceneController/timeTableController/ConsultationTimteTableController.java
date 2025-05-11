@@ -64,7 +64,10 @@ public class ConsultationTimteTableController {
     public List<Integer> listsavedTimeTable;
     protected LigneEmploiTemps ligneEmploiTemps;
     
-    // ---------------- proprièté de la tabPane de genereation de l'emploie de temps de l'etablissement
+    // bouton pour generer l'emploi de temps de l'etablissement
+    @FXML
+    public Button generateEtablissement;
+    
     
     
     @FXML
