@@ -40,7 +40,7 @@ Cette application de bureau développée en **JavaFX** avec **SQLite** comme bas
 
 ## 🧑‍💻 Technologies utilisées
 
-- **Java 8+**
+- **Java JDK 23**
 - **JavaFX**
 - **SQLite**
 - **Scene Builder**
