@@ -115,7 +115,7 @@ Cette application de bureau développée en **JavaFX** avec **SQLite** comme bas
 * 🎓 Développeur Full-Stack Junior
 * 📍 Basé au Cameroun
 * 📧 Contact : yvankamsu88@gmail.com
-* 🔗 [LinkedIn](https://www.linkedin.com/in/victor-modjo)
+* 🔗 [LinkedIn](https://www.linkedin.com/in/victor-modjo-5933162a3/)
 
 ## 🚀 Objectif
 Ce projet a été réalisé dans le cadre d’un projet de fin de formation en en Classe de Terminale TI, avec pour objectif d’apporter une solution simple, efficace et moderne à la gestion des emplois du temps dans les établissements scolaires.
