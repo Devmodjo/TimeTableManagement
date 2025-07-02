@@ -4,6 +4,11 @@
 
 Cette application de bureau développée en **JavaFX** avec **SQLite** comme base de données locale permet de **gérer efficacement les emplois du temps scolaires** d'un établissement. Elle propose une gestion centralisée des utilisateurs (administrateurs, professeurs, responsables des emplois du temps) avec **interfaces personnalisées selon les rôles**, une **authentification sécurisée**, une **gestion des matières, classes, emplois du temps**, et des **exports en PDF et Excel**.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Devmodjo/rapport-soutenance-terminal/main/enregistrementEmploiTempsClasse.png" alt="Interface Admin" width="600">
+</p>
+
+
 ---
 
 ## 🛠️ Fonctionnalités principales
@@ -103,7 +108,7 @@ Cette application de bureau développée en **JavaFX** avec **SQLite** comme bas
 - Matiere(id, nom_matiere, nom_classe)
 - Salle(id, nom, capacite)
 - EmploiTemps(id, idClasse, idProfesseur, jour, heureDebut, heureFin, idMatiere, idSalle)
-
+- un compte administrateur est disponible par defaut(username: `root`, password: `root`)
 
 ## ✍️ Auteur
  *👨‍💻 Kamsu Modjo Victor Yvan
